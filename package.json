@@ -13,8 +13,13 @@
     "@webcomponents/webcomponentsjs": "^2.5.0",
     "copy-webpack-plugin": "^7.0.0",
     "html-webpack-plugin": "^4.5.1",
+    "lit-html": "^1.3.0",
     "webpack": "^5.12.1",
     "webpack-cli": "^4.3.1",
     "webpack-dev-server": "^3.11.1"
+  },
+  "dependencies": {
+    "@lion/button": "^0.8.9",
+    "@lion/steps": "^0.6.7"
   }
 }
