@@ -3,20 +3,25 @@ import '@lion/steps/lion-step.js';
 import {counter, renderBasketButton} from "./index";
 import {html, render} from "lit-html";
 import {basketSKUHtml} from "./basket";
+import {getAddressForm} from "./shipping";
 
 const defineContent = () => html
     `<lion-steps id="steps">
         <lion-step @enter="${basketSKUHtml}" id="basketContent" initial-step>
+            Cart
             <div id="basketDivContent">
                 <ul id="basketList"></ul>
             </div>
             <lion-button id="basketNext">next</lion-button>
         </lion-step> 
-        <lion-step>Step 2
+        <lion-step @enter="${getAddressForm}">
+            Delivery Address
+            <div id="addressForm"></div>
             <lion-button id="shippingPrev">previous</lion-button>
             <lion-button id="shippingNext">next</lion-button>
         </lion-step>
-         <lion-step>Step 3
+         <lion-step>
+            Payment
             <lion-button id="paymentNext">confirm</lion-button>
          </lion-step>
           <lion-step>Thank you

@@ -1,0 +1,11 @@
+{
+  "addressList": [
+    {
+      "streetName": "sportlaan",
+      "doorNumber": 404,
+      "postalCode": "1185TP",
+      "city": "Amstelveen",
+      "country": "Netherlands"
+    }
+  ]
+}
