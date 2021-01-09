@@ -2,11 +2,14 @@ import '@lion/steps/lion-steps.js';
 import '@lion/steps/lion-step.js';
 import {counter, renderBasketButton} from "./index";
 import {html, render} from "lit-html";
+import {basketSKUHtml} from "./basket";
 
 const defineContent = () => html
     `<lion-steps id="steps">
-        <lion-step initial-step>
-            Step 1
+        <lion-step @enter="${basketSKUHtml}" id="basketContent" initial-step>
+            <div id="basketDivContent">
+                <ul id="basketList"></ul>
+            </div>
             <lion-button id="basketNext">next</lion-button>
         </lion-step> 
         <lion-step>Step 2

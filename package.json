@@ -19,6 +19,7 @@
     "webpack-dev-server": "^3.11.1"
   },
   "dependencies": {
+    "@lion/ajax": "^0.5.14",
     "@lion/button": "^0.8.9",
     "@lion/steps": "^0.6.7"
   }
