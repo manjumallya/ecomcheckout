@@ -1,11 +1,15 @@
 {
-  "addressList": [
+  "correspondenceName":"Hr J Ritsma",
+  "addresses":[
     {
-      "streetName": "sportlaan",
-      "doorNumber": 404,
-      "postalCode": "1185TP",
-      "city": "Amstelveen",
-      "country": "Netherlands"
+      "addressIndex":1,
+      "street":"Pietje puk straat",
+      "houseNumber":"6",
+      "houseNumberAddition":"",
+      "postalCode":"1335HK",
+      "city":"Almere"
     }
-  ]
+  ],
+  "personalEmailAddress":"j.ritsma@ing.com",
+  "phoneNumber":"0031-123456789"
 }
