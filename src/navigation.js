@@ -1,6 +1,6 @@
 import '@lion/steps/lion-steps.js';
 import '@lion/steps/lion-step.js';
-import {counter, renderBasketButton} from "./index";
+import {counter} from "./index";
 import {html, render} from "lit-html";
 import {basketSKUHtml} from "./basket";
 import {getAddressForm} from "./shipping";
@@ -78,8 +78,6 @@ const navigate = () => {
     });
     homeButton = document.querySelector('#home')
     homeButton.addEventListener('click', event =>{
-        document.getElementById('stepper').innerHTML = '';
-        document.getElementById('content').innerHTML = '';
-        render(renderBasketButton(), document.querySelector('#homepage'))
+        location.reload()
     })
 }
