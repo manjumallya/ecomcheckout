@@ -5,6 +5,7 @@ import {html, render} from "lit-html";
 import {basketSKUHtml} from "./basket";
 import {getAddressForm} from "./shipping";
 import {getAccountDetails} from "./payment";
+import {getThankYouContent} from "./thankyou";
 
 const defineContent = () => html
     `<lion-steps id="steps">
@@ -26,7 +27,8 @@ const defineContent = () => html
             <div id="accountForm"></div>
             <lion-button id="paymentNext">confirm</lion-button>
          </lion-step>
-          <lion-step>Thank you
+          <lion-step @enter="${getThankYouContent}">
+            <div id="thankYouContent"></div>
             <lion-button id="home">Home</lion-button>
           </lion-step>
        </lion-steps>`;

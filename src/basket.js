@@ -2,9 +2,9 @@ import {html, render} from "lit-html";
 import { ajax } from '@lion/ajax';
 
 export let basketPrice
-
+export let myList
 const formSKUList = () => {
-    let myList = document.querySelector('#basketList');
+    myList = document.querySelector('#basketList');
     if($('#basketList').contents().length == 0) {
         ajax.get('../data/sku.json')
             .then(response => {
