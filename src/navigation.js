@@ -20,7 +20,7 @@ const defineContent = () => html
             Delivery Address
             <div id="addressForm"></div>
             <lion-button id="shippingPrev">previous</lion-button>
-            <lion-button id="shippingNext">next</lion-button>
+            <lion-button disabled id="shippingNext">next</lion-button>
         </lion-step>
          <lion-step @enter="${getAccountDetails}">
             Payment

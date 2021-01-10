@@ -22,6 +22,7 @@ const formAddress = (addressData, name, phoneNumber) =>
 
 const setAddressData = (event) => {
     event.currentTarget.disabled = true
+    document.getElementById('shippingNext').disabled = false
     submittedAddress = event.target.parentElement.modelValue
 }
 
