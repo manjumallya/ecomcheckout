@@ -1,12 +1,15 @@
 import {html, render} from "lit-html";
 import { ajax } from '@lion/ajax';
 
+export let basketPrice
+
 const formSKUList = () => {
     let myList = document.querySelector('#basketList');
     if($('#basketList').contents().length == 0) {
         ajax.get('../data/sku.json')
             .then(response => {
                 response.data.basket.sort((a, b) => (a.fulfillmentType > b.fulfillmentType) ? 1 : -1)
+                basketPrice = response.data.basketSummary.price
                 for (const product of response.data.basket) {
                     let listItem = document.createElement('li');
                     listItem.appendChild(
