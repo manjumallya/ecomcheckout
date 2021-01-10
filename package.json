@@ -21,6 +21,7 @@
   "dependencies": {
     "@lion/ajax": "^0.5.14",
     "@lion/button": "^0.8.9",
+    "@lion/fieldset": "^0.15.13",
     "@lion/input": "^0.10.13",
     "@lion/steps": "^0.6.7"
   }
