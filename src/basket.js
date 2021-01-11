@@ -3,10 +3,11 @@ import { ajax } from '@lion/ajax';
 
 export let basketPrice
 export let myList
+export let updateProductData = []
 const formSKUList = () => {
     myList = document.querySelector('#basketList');
     if($('#basketList').contents().length == 0) {
-        ajax.get('../data/sku.json')
+        ajax.get('http://localhost:3000/getSku')
             .then(response => {
                 response.data.basket.sort((a, b) => (a.fulfillmentType > b.fulfillmentType) ? 1 : -1)
                 basketPrice = response.data.basketSummary.price
@@ -44,6 +45,10 @@ const formSKUList = () => {
                         document.createElement('strong')
                     ).textContent = `fulfillmentType : ${product.fulfillmentType}`;
                     myList.appendChild(listItem);
+                    updateProductData.push({
+                        "productId":product.productId,
+                        "quantity": product.quantity
+                    })
                 }
                 render(myList, document.querySelector('#basketDivContent'))
             })

@@ -30,3 +30,11 @@ export const getAccountDetails = async () => {
 const isInsufficientBalance = (amount, basketPrice) => {
     return amount - basketPrice < 0 ? true : false
 }
+
+export const updateBasketStock = (productdata) =>{
+    ajax
+        .post('http://localhost:3000/updateSku', productdata)
+        .catch(error => {
+            console.log(error);
+        });
+}
