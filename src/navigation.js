@@ -2,7 +2,7 @@ import '@lion/steps/lion-steps.js';
 import '@lion/steps/lion-step.js';
 import {counter} from "./index";
 import {html, render} from "lit-html";
-import {basketSKUHtml, updateProductData} from "./basket";
+import {basketSKUHtml, cartEmpty, updateProductData} from "./basket";
 import {getAddressForm} from "./shipping";
 import {getAccountDetails, updateAccountBalance, updateBasketStock} from "./payment";
 import {getThankYouContent} from "./thankyou";
@@ -54,6 +54,10 @@ export const loadContent = () => {
 const navigate = () => {
     basketNext = document.querySelector('#basketNext');
     basketNext.addEventListener('click', event => {
+        if(cartEmpty) {
+            location.reload()
+            return
+        }
         next()
         document.getElementById('shippingNext').disabled = true
         document.querySelector('#step1').disabled = true
