@@ -20,7 +20,7 @@ const defineContent = () => html
             Delivery Address
             <div id="addressForm"></div>
             <lion-button id="shippingPrev">previous</lion-button>
-            <lion-button disabled id="shippingNext">next</lion-button>
+            <lion-button id="shippingNext">next</lion-button>
         </lion-step>
          <lion-step @enter="${getAccountDetails}">
             Payment
@@ -55,6 +55,7 @@ const navigate = () => {
     basketNext = document.querySelector('#basketNext');
     basketNext.addEventListener('click', event => {
         next()
+        document.getElementById('shippingNext').disabled = true
         document.querySelector('#step1').disabled = true
         document.querySelector('#step2').disabled = false
     });
