@@ -44,6 +44,12 @@ const formSKUList = () => {
                     listItem.appendChild(
                         document.createElement('strong')
                     ).textContent = `fulfillmentType : ${product.fulfillmentType}`;
+                    listItem.appendChild(
+                        document.createElement('br')
+                    )
+                    listItem.appendChild(
+                        document.createElement('strong')
+                    ).textContent = `Price : ${product.price}`;
                     myList.appendChild(listItem);
                     updateProductData.push({
                         "productId":product.productId,
