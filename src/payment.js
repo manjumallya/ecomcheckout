@@ -11,10 +11,11 @@ const formAccount = (accountData) =>
                     <p id="errorBalance"></p>
                 `;
 
+let accountData
 const formAccountData = async () => {
-    await ajax.get('../data/account.json')
+    await ajax.get('http://localhost:3000/getAccountData')
         .then(response => {
-            let accountData = response.data.accounts[0];
+             accountData = response.data.accounts[0];
             render(formAccount(accountData), document.querySelector('#accountForm'))
             if (isInsufficientBalance(accountData.amount, basketPrice)) {
                 $('#errorBalance').html('Insufficient balance')
@@ -34,6 +35,18 @@ const isInsufficientBalance = (amount, basketPrice) => {
 export const updateBasketStock = (productdata) =>{
     ajax
         .post('http://localhost:3000/updateSku', productdata)
+        .catch(error => {
+            console.log(error);
+        });
+}
+
+export const updateAccountBalance = () =>{
+    const request = {
+        "number": accountData.number,
+        "basketPrice": basketPrice
+    }
+    ajax
+        .post('http://localhost:3000/updateAccountBalance', request)
         .catch(error => {
             console.log(error);
         });
