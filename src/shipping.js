@@ -42,14 +42,14 @@ const setAddressData = (event) => {
     document.getElementById('shippingNext').disabled = false
     submittedAddress = event.target.parentElement.modelValue
     ajax
-        .post('http://localhost:3000/updateAddress', submittedAddress)
+        .post('/updateAddress', submittedAddress)
         .catch(error => {
             console.log(error);
         });
 }
 
 const formAddressData = async () => {
-    await ajax.get('http://localhost:3000/getAddress')
+    await ajax.get('/getAddress')
         .then(response => {
             const addressData = response.data.addresses[0];
             const {correspondenceName, phoneNumber} = response.data

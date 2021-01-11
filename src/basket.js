@@ -7,7 +7,7 @@ export let updateProductData = []
 const formSKUList = () => {
     myList = document.querySelector('#basketList');
     if($('#basketList').contents().length == 0) {
-        ajax.get('http://localhost:3000/getSku')
+        ajax.get('/getSku')
             .then(response => {
                 if(!Object.keys(response.data).length){
                     document.getElementById('basketDivContent').innerText = 'Cart is empty'

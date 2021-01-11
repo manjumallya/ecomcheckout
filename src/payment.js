@@ -13,7 +13,7 @@ const formAccount = (accountData) =>
 
 let accountData
 const formAccountData = async () => {
-    await ajax.get('http://localhost:3000/getAccountData')
+    await ajax.get('/getAccountData')
         .then(response => {
              accountData = response.data.accounts[0];
             render(formAccount(accountData), document.querySelector('#accountForm'))
@@ -34,7 +34,7 @@ const isInsufficientBalance = (amount, basketPrice) => {
 
 export const updateBasketStock = (productdata) =>{
     ajax
-        .post('http://localhost:3000/updateSku', productdata)
+        .post('/updateSku', productdata)
         .catch(error => {
             console.log(error);
         });
@@ -46,7 +46,7 @@ export const updateAccountBalance = () =>{
         "basketPrice": basketPrice
     }
     ajax
-        .post('http://localhost:3000/updateAccountBalance', request)
+        .post('/updateAccountBalance', request)
         .catch(error => {
             console.log(error);
         });
