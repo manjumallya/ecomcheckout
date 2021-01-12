@@ -8,7 +8,11 @@ module.exports = ((server) => {
         const index = option.indexOf(base)
         const request = req.headers.referer.substring(index + base.length + 1)
 
-        res.status(200).send(sku)
+        if(request === 'emptyBasket'){
+            res.status(200).send({})
+        } else {
+            res.status(200).send(sku)
+        }
         return next()
     }));
 })
