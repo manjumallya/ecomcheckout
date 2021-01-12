@@ -3,10 +3,11 @@ import {ajax} from "@lion/ajax";
 import {html, render} from "lit-html";
 import '@lion/fieldset/lion-fieldset.js';
 import {Validator} from "@lion/form-core";
+import {voucherOnlyFlag} from "./basket";
 
 export let submittedAddress
 
-const formAddress = (addressData = {}, name = '', phoneNumber = '') => {
+const formAddress = (addressData = {}, name = '', phoneNumber = '', personalEmailAddress = '') => {
     const AddressValidator = class extends Validator {
         static get validatorName() {
             return 'AddressValidator';
@@ -23,7 +24,34 @@ const formAddress = (addressData = {}, name = '', phoneNumber = '') => {
             return 'All fields are required';
         }
     };
-    return html`
+    const EmailValidator = class extends Validator {
+        static get validatorName() {
+            return 'EmailValidator';
+        }
+        execute(value) {
+            if (value && (value.email)) {
+                document.getElementById('submitAddress').disabled = false
+                return false;
+            }
+            document.getElementById('submitAddress').disabled = true
+            return true;
+        }
+        static async getMessage() {
+            return 'All fields are required';
+        }
+    };
+    if(voucherOnlyFlag) {
+        return html`
+                <lion-fieldset name="nameGroup" id="fieldset" .validators="${[new EmailValidator()]}" label="Name">
+                    <lion-input  name="email" .modelValue=${personalEmailAddress} label="Email"></lion-input>
+                  
+                     <button id="submitAddress" @click=${setAddressData}>
+                        Submit Email
+                    </button>
+                </lion-fieldset>
+                `;
+    } else {
+        return html`
                 <lion-fieldset name="nameGroup" id="fieldset" .validators="${[new AddressValidator()]}" label="Name">
                     <lion-input  name="name" .modelValue=${name} label="Correspondence Name"></lion-input>
                     <lion-input  name="street" .modelValue=${addressData.street} label="Street Name"></lion-input>
@@ -36,6 +64,7 @@ const formAddress = (addressData = {}, name = '', phoneNumber = '') => {
                     </button>
                 </lion-fieldset>
                 `;
+    }
 }
 const setAddressData = (event) => {
     event.currentTarget.disabled = true
@@ -52,8 +81,8 @@ const formAddressData = async () => {
     await ajax.get('/getAddress')
         .then(response => {
             const addressData = response.data.addresses[0];
-            const {correspondenceName, phoneNumber} = response.data
-            render(formAddress(addressData, correspondenceName, phoneNumber), document.querySelector('#addressForm'))
+            const {correspondenceName, phoneNumber, personalEmailAddress} = response.data
+            render(formAddress(addressData, correspondenceName, phoneNumber, personalEmailAddress), document.querySelector('#addressForm'))
         }).catch(error=> {
             render(formAddress(), document.querySelector('#addressForm'))
         })

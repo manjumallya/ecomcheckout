@@ -1,7 +1,7 @@
 import {html, render} from "lit-html";
 import { ajax } from '@lion/ajax';
 
-export let basketPrice, cartEmpty = false
+export let basketPrice, cartEmpty = false, voucherOnlyFlag = true
 export let myList
 export let updateProductData = []
 const formSKUList = () => {
@@ -56,6 +56,9 @@ const formSKUList = () => {
                             document.createElement('strong')
                         ).textContent = `Price : ${product.price}`;
                         myList.appendChild(listItem);
+                        if(product.fulfillmentType !== 'VOUCHER') {
+                            voucherOnlyFlag = false
+                        }
                         updateProductData.push({
                             "productId": product.productId,
                             "quantity": product.quantity

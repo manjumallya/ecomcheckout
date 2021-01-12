@@ -1,4 +1,5 @@
 const sku = require('./getSku.json')
+const voucherOnly = require('./voucherOnly.json')
 
 module.exports = ((server) => {
     server.get('/getSku', ((req, res, next) => {
@@ -10,6 +11,8 @@ module.exports = ((server) => {
 
         if(request === 'emptyBasket'){
             res.status(200).send({})
+        } else if(request === 'voucherOnly'){
+            res.status(200).send(voucherOnly)
         } else {
             res.status(200).send(sku)
         }

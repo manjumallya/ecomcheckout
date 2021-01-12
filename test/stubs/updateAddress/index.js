@@ -15,6 +15,7 @@ module.exports = ((server) => {
         addressData.addresses[0].city = addressRequest.city
         addressData.addresses[0].houseNumber = addressRequest.houseNumber
         addressData.phoneNumber = addressRequest.phone
+        addressData.personalEmailAddress = addressRequest.email
         res.status(200).send(addressData);
 
         return next()
