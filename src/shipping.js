@@ -6,7 +6,7 @@ import {Validator} from "@lion/form-core";
 
 export let submittedAddress
 
-const formAddress = (addressData, name, phoneNumber) => {
+const formAddress = (addressData = {}, name = '', phoneNumber = '') => {
     const AddressValidator = class extends Validator {
         static get validatorName() {
             return 'AddressValidator';
@@ -54,6 +54,8 @@ const formAddressData = async () => {
             const addressData = response.data.addresses[0];
             const {correspondenceName, phoneNumber} = response.data
             render(formAddress(addressData, correspondenceName, phoneNumber), document.querySelector('#addressForm'))
+        }).catch(error=> {
+            render(formAddress(), document.querySelector('#addressForm'))
         })
 }
 

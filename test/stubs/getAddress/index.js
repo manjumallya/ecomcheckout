@@ -7,9 +7,11 @@ module.exports = ((server) => {
         const { pagename } = req.headers
         const index = option.indexOf(base)
         const request = req.headers.referer.substring(index + base.length + 1)
-
-        res.status(200).send(address)
-
+        if(request === 'addressNotFound'){
+            res.status(404).send(null)
+        } else {
+            res.status(200).send(address)
+        }
         return next()
     }));
 })
