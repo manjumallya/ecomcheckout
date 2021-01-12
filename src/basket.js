@@ -1,9 +1,8 @@
 import {html, render} from "lit-html";
 import { ajax } from '@lion/ajax';
 
-export let basketPrice, cartEmpty = false, voucherOnlyFlag = true
-export let myList
-export let updateProductData = []
+export let basketPrice, cartEmpty = false, voucherOnlyFlag = true, myList, updateProductData = []
+
 const formSKUList = () => {
     myList = document.querySelector('#basketList');
     if($('#basketList').contents().length == 0) {

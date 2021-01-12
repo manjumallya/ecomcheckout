@@ -1,6 +1,5 @@
 import '@lion/steps/lion-steps.js';
 import '@lion/steps/lion-step.js';
-import {counter} from "./index";
 import {html, render} from "lit-html";
 import {basketSKUHtml, cartEmpty, updateProductData} from "./basket";
 import {getAddressForm} from "./shipping";
