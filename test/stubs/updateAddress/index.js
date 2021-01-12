@@ -9,13 +9,16 @@ module.exports = ((server) => {
         const request = req.headers.referer.substring(index + base.length + 1)
 
         const addressRequest = req.body;
-        addressData.correspondenceName = addressRequest.name
-        addressData.addresses[0].postalCode = addressRequest.postalCode
-        addressData.addresses[0].street = addressRequest.street
-        addressData.addresses[0].city = addressRequest.city
-        addressData.addresses[0].houseNumber = addressRequest.houseNumber
-        addressData.phoneNumber = addressRequest.phone
-        addressData.personalEmailAddress = addressRequest.email
+        if(addressRequest.email !=null && addressRequest.email !=undefined && addressRequest.email != '' ) {
+            addressData.personalEmailAddress = addressRequest.email
+        } else{
+            addressData.correspondenceName = addressRequest.name
+            addressData.addresses[0].postalCode = addressRequest.postalCode
+            addressData.addresses[0].street = addressRequest.street
+            addressData.addresses[0].city = addressRequest.city
+            addressData.addresses[0].houseNumber = addressRequest.houseNumber
+            addressData.phoneNumber = addressRequest.phone
+        }
         res.status(200).send(addressData);
 
         return next()

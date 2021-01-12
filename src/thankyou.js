@@ -8,7 +8,8 @@ const thankYouMessage = () =>
         <p>Items going to be delivered: </p><br>
         ${myList}
         <h4>Delivery Address: </h4>
-        <p>
+        <p >
+        ${submittedAddress.email}
         ${submittedAddress.name} <br>
         ${submittedAddress.street} <br>
         ${submittedAddress.houseNumber} <br>
