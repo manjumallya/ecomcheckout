@@ -45,10 +45,8 @@ const previous = () => {
 }
 
 export const loadContent = () => {
-    if(counter === 1) {
-        render(defineContent(), document.querySelector('#content'))
-        navigate()
-    }
+    render(defineContent(), document.querySelector('#content'))
+    navigate()
 }
 
 const navigate = () => {
